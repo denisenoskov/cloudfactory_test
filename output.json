@@ -1,0 +1,144 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Выходные парамтеры процедуры для получения инвест идей",
+    "description": "Выходные параметры процедуры для получения таблицы инвест идей отфильтрованных по названию, имени источника идеи, целевому доходу; отсортирована по оценке количества совпадений в описании. Может принимать вместо конкретных значнией NULL,в таком случае, не фильтрует по вбранному параметру",
+    "examples": [
+        {   "id": 3,
+            "name": "AMD: разгон процессора (#3)",
+            "description": "Переоткрываем инвест идею по AMD ...",
+            "price_at_start": 9085.9,
+            "current_price": 9610.1,
+            "target_price": 13434.4,
+            "date_published": "2021-10-20",
+            "date_horizon": "2022-10-20",
+            "idea_source": "Invest Heroes",
+            "score": 0,
+            "profit": 47.8599
+        }
+    ],
+    "required": [
+        "id",
+        "name",
+        "description",
+        "price_at_start",
+        "current_price",
+        "target_price",
+        "date_published",
+        "date_horizon",
+        "idea_source",
+        "score",
+        "profit"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "type": "number",
+            "title": "Порядковый номер в таблице",
+            "description": "Порядковый номер в таблице, начинается с 1",
+            "examples": [
+                1
+            ],
+            "minimum": 1
+        },
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "Название идеи",
+            "description": "Титульное имя идеи, заголовок",
+            "examples": [
+                "AMD: разгон процессора (#3)"
+            ],
+            "minLength": 0,
+            "maxLength": 100
+        },
+        "description": {
+            "$id": "#/properties/description",
+            "type": "string",
+            "title": "Описание идеи",
+            "description": "Подробное описание идеи",
+            "examples": [
+                "Переоткрываем инвест идею по AMD ..."
+            ],
+            "minLength": 0
+        },
+        "price_at_start": {
+            "$id": "#/properties/price_at_start",
+            "type": "number",
+            "title": "Цена акций в момент публикации идеи",
+            "description": "Цена акций в момент публикации идеи, не может быть отрицательной, выражена в рублях",
+            "examples": [
+                9085.9
+            ]
+        },
+        "current_price": {
+            "$id": "#/properties/current_price",
+            "type": "number",
+            "title": "Цена акций на текщий момент",
+            "description": "Цена акций на текущий момент, не может быть отрицательной, выражена в рублях",
+            "examples": [
+                9610.1
+            ]
+        },
+        "target_price": {
+            "$id": "#/properties/target_price",
+            "type": "number",
+            "title": "Целевая цена акций",
+            "description": "Целевая цена акций планируемая на дату завершения срока идеи, не может быть отрицательной, выражена в рублях",
+            "examples": [
+                13434.4
+            ]
+        },
+        "date_published": {
+            "$id": "#/properties/date_published",
+            "type": "string",
+            "format": "date",
+            "title": "Дата публикации идеи",
+            "description": "Дата публикации идеи",
+            "examples": [
+                "2021-10-20"
+            ]
+        },
+        "date_target": {
+            "$id": "#/properties/date_published",
+            "type": "string",
+            "format": "date",
+            "title": "Целевая дата для идеи",
+            "description": "Целевая дата для идеи, когда цена станет целевой",
+            "examples": [
+                "2022-10-20"
+            ]
+        },
+        "idea_source": {
+            "$id": "#/properties/idea_source",
+            "type": "string",
+            "title": "Источник идеи",
+            "description": "Титульное имя источник идеи",
+            "examples": [
+                "Invest Heroes"
+            ],
+            "minLength": 0,
+            "maxLength": 100
+        },
+        "score": {
+            "$id": "#/properties/score",
+            "type": "number",
+            "title": "Оценка совпадений",
+            "description": "Оценка количества совпадений в описании с фильтром по description, применима когда был фильтр по описанию, иначе 0",
+            "examples": [
+                2
+            ],
+            "minimum": 0
+        },
+        "profit": {
+            "$id": "#/properties/profit",
+            "type": "number",
+            "title": "Планируемая прибыль в %",
+            "description": "Планируемая прибыль в процентах, рассчитывается как отношение целевой цены к стартовой цене минус 100%",
+            "examples": [
+                47.8599
+            ]
+        }
+    }
+}

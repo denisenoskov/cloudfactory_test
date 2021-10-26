@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Входные параметры процедуры для получения инвест идей",
+    "description": "Входные параметры процедуры для получения таблицы инвест идей отфильтрованных по названию, имени источника идеи, целевому доходу; отсортирована по оценке количества совпадений в описании. Может принимать вместо конкретных значнией NULL,в таком случае, не фильтрует по вбранному параметру",
+    "examples": [
+        {
+            "name": "sber",
+            "description": "sber",
+            "target_profit_gte": 200,
+            "target_profit_lte": 1000,
+            "idea_source": "sber"
+        },
+        {
+            "name": null,
+            "description": null,
+            "target_profit_gte": null,
+            "target_profit_lte": null,
+            "idea_source": null
+        },
+        {
+            "name": null,
+            "description": null,
+            "target_profit_gte": 200,
+            "target_profit_lte": null,
+            "idea_source": null
+        }
+    ],
+    "required": [
+        "name",
+        "description",
+        "target_profit_gte",
+        "target_profit_lte",
+        "idea_source"
+    ],
+    "properties": {
+        "name": {
+            "$id": "#/properties/name",
+            "type": ["string", "null"],
+            "title": "Название идеи",
+            "description": "фильтр названия идеи, фильтрует по вхождению в любом месте поля. Если передается null - не фильтрует",
+            "examples": [
+                "sber", null
+            ]
+        },
+        "description ": {
+            "$id": "#/properties/description",
+            "type": ["string", "null"],
+            "title": "Описание идеи",
+            "description": "используется для оценки, чем чаще слова из параметра попадаются в описании, тем выше оценка",
+            "examples": [
+                "sber", null
+            ]
+        },
+        "target_profit_gte ": {
+            "$id": "#/properties/target_profit_gte",
+            "type": ["number", "null"],
+            "title": "Минимальное отношение доходности идеи в виде процентов",
+            "description": "Используется для фильтра, не менее данного значения будет отношение целевой цены к изначальной, если передается null - выставляется в -10000",
+            "examples": [
+                2.0, null
+            ]
+        },
+        "target_profit_lte ": {
+            "$id": "#/properties/target_profit_lte",
+            "type": ["number", "null"],
+            "title": "Максимальное отношение доходности идеи в виде процентов",
+            "description": "Используется для фильтра, не более данного значения будет отношение целевой цены к изначальной, если передается null - выставляется в 10000",
+            "examples": [
+                10.0, null
+            ]
+        },
+        "idea_source ": {
+            "$id": "#/properties/idea_source",
+            "type": ["string", "null"],
+            "title": "Название источника идеи",
+            "description": "Фильтр названия источника идеи, фильтрует по вхождению в любом месте поля. Если передается null - не фильтрует",
+            "default": "",
+            "examples": [
+                "sber"
+            ]
+        }
+    }
+}
+
